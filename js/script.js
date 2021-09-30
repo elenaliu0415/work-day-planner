@@ -16,34 +16,33 @@
 // result adds "past" class to time block to make gray
 
 // moment js to show today's day and current time
-var today = moment();
-$("#currentDay").text(today.format("LLLL"));
+
 var todos = [];
-var input = document.getElementsByClassName("description");
-var saveButton = document.getElementsByClassName("saveBtn");
-var todoItem = input.value;
+var saveButton = $(".saveBtn");
 
-// When input text in the textarea, click save button and the text will be stored
-// If refresh the page, the todos are still showing
-// localStorage.setItem("input");
-localStorage.setItem("eventInfo", JSON.stringify(todoItem));
+var today = $("#currentDay").text(moment().format("LLLL"));
 
-if (todoItem !== null) {
-    todoItem = "";
-}
+saveButton.on("click", function() {
+    // console.log(this);
+    var hour = $(this).parent().attr("id");
+    var input = $(this).siblings(".description").val();
 
-// saveButton.addEventListener('click', 
+    localStorage.setItem(hour, input);
+})
+
+// $("#container").each(function () {
+//     var i = $(this).children("id").val(localStorage.getItem(i));
+//     var j = $(this).children("description").val(localStorage.getItem(j));
+//     console.log(i, j);
+// });
+
+
+
+
+
     
 
 
 
 
 
-
-
-// function renderMessage() {
-//     var savedTodo = JSON.parse(localStorage.getItem("eventInfo"));
-//     if (savedTodo !== null) {
-//         document.querySelector(".description").textContent = savedTodo.todoItem;
-//     }
-// }
